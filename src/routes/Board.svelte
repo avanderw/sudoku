@@ -5,7 +5,7 @@
 	import CellPotential from './CellPotential.svelte';
 	import { onMount } from 'svelte';
 
-  const nf = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+	const nf = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
 	export let board: number[] = Array.from({ length: 81 }, (_, i) =>
 		Math.random() < 0.5 ? 0 : Math.floor(Math.random() * 9) + 1
 	);
@@ -19,10 +19,10 @@
 	$: key = board.join('');
 	$: stats = $statsstore[key];
 
-	function resetUnique(board: number[]): {unique:boolean, timeout:boolean} | undefined {
+	function resetUnique(board: number[]): { unique: boolean; timeout: boolean } | undefined {
 		return undefined;
 	}
-	
+
 	$: isPrinting = false;
 	onMount(() => {
 		isPrinting = window.location.pathname.includes('/print');
@@ -30,14 +30,13 @@
 </script>
 
 <div hidden={isPrinting}>
-<span>Filled: {board.filter((v) => v !== 0).length}</span>
-{#if puzzleMask.length > 0}
-	<span>Clues: {puzzleMask.filter((v) => v !== 0).length}</span>
-{/if}
-{#if stats}
-	<span>Rating: {nf.format(score(stats))}</span>
-{/if}
-<span><a href="/print?puzzle={JSON.stringify(board)}" target="_blank">Print</a></span>
+	<span><a href="/print?puzzle={JSON.stringify(board)}" target="_blank">Print</a></span><br />
+	{#if puzzleMask.length > 0}
+		<span>Clues: {puzzleMask.filter((v) => v !== 0).length}</span><br />
+	{/if}
+	{#if stats}
+		<span>Rating:</span><span class="accent">{nf.format(score(stats))}</span><br />
+	{/if}
 </div>
 
 <table class:center={isPrinting}>
@@ -60,24 +59,24 @@
 </table>
 
 <div hidden={isPrinting}>
-<span><b>Solvable:</b> {solvable ? 'Yes' : 'No'}</span>
-<span>
-	<b>Unique:</b>
-	{#if unique === undefined}
-		<button on:click={() => (unique = boardUnique(board, 50000) )}>Calculate</button>
-	{:else}
-		{unique.unique ? 'Yes' : unique.timeout ? 'Timeout' : 'No' }
-	{/if}
-</span>
+	<span><b>Solvable:</b> {solvable ? 'Yes' : 'No'}</span><br />
+	<span>
+		<b>Unique:</b>
+		{#if unique === undefined}
+			<button on:click={() => (unique = boardUnique(board, 50000))}>Calculate</button>
+		{:else}
+			{unique.unique ? 'Yes' : unique.timeout ? 'Timeout' : 'No'}
+		{/if}
+	</span>
 </div>
 
 <style>
 	table {
 		border-collapse: collapse;
-		border: 2px solid black;
+		border: 2px solid var(--primary-9);
 	}
 	td {
-		border: 1px solid lightgray;
+		border: 1px solid var(--primary-4);
 		width: 36px;
 		height: 36px;
 		text-align: center;
@@ -85,18 +84,19 @@
 		margin: 0px;
 	}
 	.bottom {
-		border-bottom: 2px solid black;
+		border-bottom: 2px solid var(--primary-9);
 	}
 	.right {
-		border-right: 2px solid black;
+		border-right: 2px solid var(--primary-9);
 	}
 	.bold {
 		font-weight: bold;
-		background-color: #f0f0f0;
+		color: var(--primary-9);
+		background-color: var(--primary-2);
 	}
 	span {
 		display: inline-block;
-		padding: 0.5rem;
+		padding: 0.125rem;
 		margin: 0.125rem 0;
 	}
 	.center {
@@ -106,15 +106,22 @@
 		transform: translate(-25%, -25%);
 		scale: 2;
 	}
-	a, button {
+	a,
+	button {
 		padding: 0.125rem 0.25rem;
-		border: 1px solid black;
-		color: white;
-		background-color: #04aa6d;
+		border: 1px solid var(--primary-9);
+		color: var(--primary-1);
+		background-color: var(--secondary-6);
 		text-decoration: none;
 		cursor: pointer;
+		font-size: smaller;
 	}
-	a:hover, button:hover {
-		background-color: #026b45;
+	a:hover,
+	button:hover {
+		background-color: var(--secondary-7);
+	}
+	.accent {
+		color: var(--accent-6);
+		font-weight: bold;
 	}
 </style>

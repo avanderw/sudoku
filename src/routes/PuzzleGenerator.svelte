@@ -153,17 +153,18 @@
 	}
 	button {
 		padding: 0.25rem 0.5rem;
-		border: 1px solid black;
-		color: white;
-		background-color: #04aa6d;
+		border: 1px solid var(--primary-9);
+		color: var(--primary-1);
+		background-color: var(--secondary-6);
     cursor: pointer;
 	}
 	button:hover {
-		background-color: #026b45;
+		background-color: var(--secondary-7);
 	}
 	button:disabled {
-		color: black;
-		background-color: lightgray;
+		color: var(--primary-9);
+		background-color:  var(--primary-4);
+		cursor: auto;
 	}
 	input {
 		width: 50px;

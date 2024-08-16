@@ -20,7 +20,7 @@
 		height: 100%;
 		border-collapse: collapse;
 		font-size: xx-small;
-		color: gray;
+		color: var(--primary-5);
 		overflow: hidden;
 		font-family: Arial, Helvetica, sans-serif;
     border: none;
