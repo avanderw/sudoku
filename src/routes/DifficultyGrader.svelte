@@ -162,10 +162,22 @@
 	}
 	button {
 		padding: 0.25rem 0.5rem;
-		border: 1px solid var(--primary-9);
-		color: var(--primary-1);
-		background-color: var(--secondary-6);
-    cursor: pointer;
+		border: none;
+		color: var(--neutral-5);
+		font-weight: bold;
+		font-family: inherit;
+		background-color: var(--primary-4);
+		text-decoration: none;
+		cursor: pointer;
+		font-size: smaller;
+	}
+	button:hover {
+		background-color: var(--secondary-4);
+	}
+	button:disabled {
+		color: var(--neutral-1);
+		background-color: var(--neutral-4);
+		cursor: auto;
 	}
   th {
     text-align: right; 
@@ -173,14 +185,6 @@
   table table td button {
     width: 14rem;
   }
-	button:hover {
-		background-color: var(--secondary-7);
-	}
-	button:disabled {
-		color: var(--primary-9);
-		background-color: var(--primary-3);
-		cursor: auto;
-	}
 	input {
 		width: 50px;
 	}

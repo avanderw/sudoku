@@ -215,17 +215,21 @@
 	}
 	button {
 		padding: 0.25rem 0.5rem;
-		border: 1px solid var(--primary-9);
-		color: var(--primary-1);
-		background-color: var(--secondary-6);
+		border: none;
+		color: var(--neutral-5);
+		font-weight: bold;
+		font-family: inherit;
+		background-color: var(--primary-4);
+		text-decoration: none;
 		cursor: pointer;
+		font-size: smaller;
 	}
 	button:hover {
-		background-color: var(--secondary-7);
+		background-color: var(--secondary-4);
 	}
 	button:disabled {
-		color: var(--primary-9);
-		background-color: var(--primary-1);
+		color: var(--neutral-1);
+		background-color: var(--neutral-4);
 		cursor: auto;
 	}
 	input {
@@ -238,6 +242,6 @@
 		text-align: right;
 	}
 	th {
-		color: var(--accent-6);
+		color: var(--secondary-3);
 	}
 </style>

@@ -30,13 +30,13 @@
 </script>
 
 <div hidden={isPrinting}>
-	<span><a href="/print?puzzle={JSON.stringify(board)}" target="_blank">Print</a></span><br />
 	{#if puzzleMask.length > 0}
 		<span>Clues: {puzzleMask.filter((v) => v !== 0).length}</span><br />
 	{/if}
 	{#if stats}
 		<span>Rating:</span><span class="accent">{nf.format(score(stats))}</span><br />
 	{/if}
+	<span><a href="/print?puzzle={JSON.stringify(board)}" target="_blank">Print</a></span>
 </div>
 
 <table class:center={isPrinting}>
@@ -71,12 +71,15 @@
 </div>
 
 <style>
+	:root {
+		--borders: var(--neutral-2);
+	}
 	table {
 		border-collapse: collapse;
-		border: 2px solid var(--primary-9);
+		border: 2px solid var(--borders);
 	}
 	td {
-		border: 1px solid var(--primary-4);
+		border: 1px solid var(--neutral-4);
 		width: 36px;
 		height: 36px;
 		text-align: center;
@@ -84,15 +87,15 @@
 		margin: 0px;
 	}
 	.bottom {
-		border-bottom: 2px solid var(--primary-9);
+		border-bottom: 2px solid var(--borders);
 	}
 	.right {
-		border-right: 2px solid var(--primary-9);
+		border-right: 2px solid var(--borders);
 	}
 	.bold {
 		font-weight: bold;
-		color: var(--primary-9);
-		background-color: var(--primary-2);
+		color: var(--neutral-5);
+		background-color: var(--primary-3);
 	}
 	span {
 		display: inline-block;
@@ -108,20 +111,22 @@
 	}
 	a,
 	button {
-		padding: 0.125rem 0.25rem;
-		border: 1px solid var(--primary-9);
-		color: var(--primary-1);
-		background-color: var(--secondary-6);
+		padding: 0.25rem 0.5rem;
+		border: none;
+		color: var(--neutral-5);
+		font-weight: bold;
+		font-family: inherit;
+		background-color: var(--primary-4);
 		text-decoration: none;
 		cursor: pointer;
 		font-size: smaller;
 	}
 	a:hover,
 	button:hover {
-		background-color: var(--secondary-7);
+		background-color: var(--secondary-4);
 	}
 	.accent {
-		color: var(--accent-6);
+		color: var(--secondary-3);
 		font-weight: bold;
 	}
 </style>
