@@ -12,6 +12,10 @@
 		<svg><use href="feather-sprite.svg#github" /></svg>
 		Source
 	</a>
+  <a href="https://tracking.avanderw.co.za/avanderw.co.za">
+		<svg><use href="feather-sprite.svg#bar-chart-2" /></svg>
+		Analytics
+	</a>
 </div>
 
 <h1>Sudoku</h1>
